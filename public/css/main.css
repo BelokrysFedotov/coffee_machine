@@ -1,0 +1,97 @@
+body {
+	font-size: 16px;
+}
+
+#page {
+	margin: 10px auto;
+	width: 800px;
+	border: 1px solid #000000;
+	padding: 5px;
+}
+
+#CoffeeMachine {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#CoffeeMachine .Debug {
+	flex: 1 1 100%;
+	padding: 7px;
+	margin: 5px;
+	border: 1px solid #AAAAAA;
+	background: #CCCCCC;
+	border-radius: 5px;
+
+}
+
+#CoffeeMachine .Machine {
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	flex: 1 1 50%;
+	padding: 7px;
+	margin: 5px;
+	display: flex;
+
+}
+
+#CoffeeMachine .Machine .Items {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	flex: 1 1 50%;
+}
+
+#CoffeeMachine .Machine .Items li {
+	flex: 1 1 100%;
+}
+
+#CoffeeMachine .Machine .Items li button {
+	width: 100%;
+}
+
+#CoffeeMachine .Machine .Cashbox {
+	flex: 1 1 25%;
+	text-align: center;
+}
+
+#CoffeeMachine .Machine .Cashbox .Coins{
+	border: 1px solid #CCCCCC;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#CoffeeMachine .Machine .Cashbox .Coins td, #CoffeeMachine .Machine .Cashbox .Coins th{
+	border: 1px solid #CCCCCC;
+	padding: 5px;
+}
+
+#CoffeeMachine .Machine .Panel {
+	flex: 1 1 25%;
+	text-align: center;
+}
+
+#CoffeeMachine .User {
+	border: 1px solid #AAAAAA;
+	border-radius: 5px;
+	flex: 1 1 20%;
+	padding: 7px;
+	margin: 5px;
+	display: flex;
+}
+
+#CoffeeMachine .User .Cashbox {
+	flex: 1 1 100%;
+	text-align: center;
+}
+
+#CoffeeMachine .User .Cashbox .Coins{
+	border: 1px solid #CCCCCC;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#CoffeeMachine .User .Cashbox .Coins td, #CoffeeMachine .User .Cashbox .Coins th{
+	border: 1px solid #CCCCCC;
+	padding: 5px;
+}

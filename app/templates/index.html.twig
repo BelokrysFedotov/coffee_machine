@@ -1,0 +1,57 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <div id="CoffeeMachine">
+        <div class="Debug" v-if="Debug">${Debug}</div>
+        <div class="Machine">
+            <ul class="Items">
+                <li v-for="item in CoffeeMachine.Machine.Items">
+                    <button :disabled="item.disabled" v-on:click="buy(item)">
+                        ${item.name} - ${item.price}р x ${item.count}
+                    </button>
+                </li>
+            </ul>
+
+            <div class="Cashbox">
+                <table class="Coins">
+                    <tr>
+                        <th>Coin</th>
+                        <th>Count</th>
+                    </tr>
+                    <tr v-for="item in CoffeeMachine.Machine.Cashbox.Coins">
+                        <td>${item.value}р</td>
+                        <td>${item.count}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="Panel">
+                <p>${CoffeeMachine.Machine.status}</p>
+                <p>Balance: ${CoffeeMachine.Machine.Cashbox.balance}р</p>
+                <button  v-on:click="getChange">Get change</button>
+            </div>
+
+
+        </div>
+        <div class="User">
+
+            <div class="Cashbox">
+                <table class="Coins">
+                    <tr>
+                        <th>Item</th>
+                        <th>Count</th>
+                        <th></th>
+                    </tr>
+                    <tr v-for="item in CoffeeMachine.User.Cashbox.Coins">
+                        <td>${item.value}р</td>
+                        <td>${item.count}</td>
+                        <td>
+                            <button  :disabled="item.count <= 0" v-on:click="take(item)">Take</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title 'Coffee machine' %}</title>
+
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css"/>
+    <script src="{{ asset('js/vue.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
+</head>
+<body>
+<div id="page">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

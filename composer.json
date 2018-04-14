@@ -8,5 +8,16 @@
       "name": "Belokrys-Fedotov A.I.",
       "email": "belokrys.fedotov@gmail.com"
     }
-  ]
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "silex/silex": "~2.0",
+    "symfony/asset": "~2.8|^3.0",
+    "symfony/twig-bridge": "~2.8|^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "CoffeeMachine\\": "src/"
+    }
+  }
 }
