@@ -8,15 +8,24 @@ build:
   image: php:7-fpm
   script:
     - "php -v"
+  tags:
+    - php
+    - php7-fpm
 
 test:
   stage: test
   image: php:7-fpm
   script:
     - "php -v"
+  tags:
+    - php
+    - php7-fpm
 
 deploy:
   stage: deploy
   image: php:7-fpm
   script:
     - "php -v"
+  tags:
+    - php
+    - php7-fpm
