@@ -98,38 +98,34 @@ window.addEventListener('load', function () {
 					app.Debug = 'Не достаточно монет';
 					return false;
 				}
-				var coin = null;
-				app.CoffeeMachine.Machine.Cashbox.Coins.forEach(function (c) {
-					if (c.value == item.value) {
-						coin = c;
-					}
-				});
 
+				var coin = this.getMachineCashboxCoin(item.value);
 				item.count--;
 				coin.count++;
-				app.CoffeeMachine.Machine.Cashbox.balance += item.value;
+				this.CoffeeMachine.Machine.Cashbox.balance += item.value;
 			},
 			buy: function (item) {
 				//JS solition
 				if (item.count <= 0) {
-					app.Debug = 'Не достаточно товара';
+					this.Debug = 'Не достаточно товара';
 					return false;
 				}
 				if (item.price > app.CoffeeMachine.Machine.Cashbox.balance) {
-					app.Debug = 'Не достаточно баланса';
+					this.Debug = 'Не достаточно баланса';
 					return false;
 				}
 				item.count--;
-				app.CoffeeMachine.Machine.Cashbox.balance -= item.price;
+				this.CoffeeMachine.Machine.Cashbox.balance -= item.price;
 			},
 			getChange: function (event) {
+				var app = this;
 				//JS solition
-				if (app.CoffeeMachine.Machine.Cashbox.balance <= 0) {
-					app.Debug = 'Нечего возвращать';
+				if (this.CoffeeMachine.Machine.Cashbox.balance <= 0) {
+					this.Debug = 'Нечего возвращать';
 					return false;
 				}
 
-				var coins = app.CoffeeMachine.Machine.Cashbox.Coins.slice();
+				var coins = this.CoffeeMachine.Machine.Cashbox.Coins.slice();
 
 				coins.sort(function (a, b) {
 					if (a.value < b.value) return 1;
@@ -138,12 +134,7 @@ window.addEventListener('load', function () {
 				});
 
 				coins.forEach(function (coin) {
-					var uCoin = null;
-					app.CoffeeMachine.User.Cashbox.Coins.forEach(function (c) {
-						if (c.value == coin.value) {
-							uCoin = c;
-						}
-					});
+					var uCoin = app.getUserCashboxCoin(coin.value);
 					while (app.CoffeeMachine.Machine.Cashbox.balance >= coin.value && coin.count > 0) {
 						coin.count--;
 						uCoin.count++;
@@ -151,6 +142,35 @@ window.addEventListener('load', function () {
 					}
 				});
 			},
+
+			getMachineCashboxCoin: function (value) {
+				var find = null;
+				this.CoffeeMachine.Machine.Cashbox.Coins.forEach(function (coin) {
+					if (coin.value == value) {
+						find = coin;
+					}
+				});
+				if (find) return find;
+				var n = this.CoffeeMachine.Machine.Cashbox.Coins.push({
+					value: value,
+					count: 0
+				});
+				return this.CoffeeMachine.Machine.Cashbox.Coins[n];
+			},
+			getUserCashboxCoin: function (value) {
+				var find = null;
+				this.CoffeeMachine.User.Cashbox.Coins.forEach(function (coin) {
+					if (coin.value == value) {
+						find = coin;
+					}
+				});
+				if (find) return find;
+				var n = this.CoffeeMachine.User.Cashbox.Coins.push({
+					value: value,
+					count: 0
+				});
+				return this.CoffeeMachine.User.Cashbox.Coins[n];
+			}
 		},
 
 		data: data
