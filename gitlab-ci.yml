@@ -1,1 +1,22 @@
+stages:
+  - build
+  - test
+  - deploy
 
+build:
+  stage: build
+  image: php:7-fpm
+  script:
+    - "php -v"
+
+test:
+  stage: test
+  image: php:7-fpm
+  script:
+    - "php -v"
+
+deploy:
+  stage: test
+  image: php:7-fpm
+  script:
+    - "php -v"
