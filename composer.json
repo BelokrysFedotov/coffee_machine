@@ -1,0 +1,12 @@
+{
+  "name": "masoft/coffee_machine",
+  "description": "Test task for Ecommpay",
+  "minimum-stability": "stable",
+  "license": "THE BEER-WARE LICENSE",
+  "authors": [
+    {
+      "name": "Belokrys-Fedotov A.I.",
+      "email": "belokrys.fedotov@gmail.com"
+    }
+  ]
+}
