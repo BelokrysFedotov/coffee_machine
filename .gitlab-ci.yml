@@ -16,7 +16,7 @@ test:
     - "php -v"
 
 deploy:
-  stage: test
+  stage: deploy
   image: php:7-fpm
   script:
     - "php -v"
