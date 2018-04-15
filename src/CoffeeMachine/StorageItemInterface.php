@@ -65,14 +65,14 @@ interface StorageItemInterface {
 	 *
 	 * @param int $count
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function get(int $count);
 
 	/**
 	 * Забрать один товар
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne();
 

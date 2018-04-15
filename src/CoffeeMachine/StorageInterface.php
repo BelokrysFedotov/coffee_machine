@@ -29,7 +29,7 @@ interface StorageInterface {
 	 * @param string $itemId
 	 *
 	 * @return StorageItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function find(string $itemId);
 
@@ -39,7 +39,7 @@ interface StorageInterface {
 	 * @param string $itemId
 	 *
 	 * @return StorageItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne(string $itemId);
 
@@ -48,7 +48,7 @@ interface StorageInterface {
 	 *
 	 * @param StorageItemInterface $item
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function pushItem(StorageItemInterface $item);
 
@@ -57,7 +57,7 @@ interface StorageInterface {
 	 *
 	 * @param string $itemId
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function pushOne(string $itemId);
 

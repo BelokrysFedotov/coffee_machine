@@ -17,7 +17,7 @@ interface ChangeStrategyInterface {
 	 * @param CashBoxInterface $cashBox
 	 *
 	 * @return array|CashBoxItemInterface[]
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getChange(int $balance, CashBoxInterface $cashBox);
 

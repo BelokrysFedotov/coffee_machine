@@ -88,11 +88,11 @@ class Storage implements StorageInterface {
 	 * @param string $itemId
 	 *
 	 * @return StorageItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function find(string $itemId) {
 		if (!array_key_exists($itemId, $this->items)) {
-			throw new \Exception('Товар ' . $itemId . ' не найден');
+			throw new CoffeeMachineException('Товар ' . $itemId . ' не найден');
 		}
 		return $this->items[$itemId];
 	}
@@ -103,11 +103,11 @@ class Storage implements StorageInterface {
 	 * @param string $itemId
 	 *
 	 * @return StorageItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne(string $itemId) {
 		if (!array_key_exists($itemId, $this->items)) {
-			throw new \Exception('Товар ' . $itemId . ' не найден');
+			throw new CoffeeMachineException('Товар ' . $itemId . ' не найден');
 		}
 		return $this->items[$itemId]->getOne();
 	}
@@ -117,11 +117,11 @@ class Storage implements StorageInterface {
 	 *
 	 * @param StorageItemInterface $item
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function pushItem(StorageItemInterface $item) {
 		if (!array_key_exists($item->id(), $this->items)) {
-			throw new \Exception('Товар ' . $item->id() . ' не найден');
+			throw new CoffeeMachineException('Товар ' . $item->id() . ' не найден');
 		}
 		$this->items[$item->id()]->push($item->count());
 	}
@@ -131,11 +131,11 @@ class Storage implements StorageInterface {
 	 *
 	 * @param string $itemId
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function pushOne(string $itemId) {
 		if (!array_key_exists($itemId, $this->items)) {
-			throw new \Exception('Товар ' .$itemId . ' не найден');
+			throw new CoffeeMachineException('Товар ' .$itemId . ' не найден');
 		}
 		$this->items[$itemId]->pushOne();
 	}

@@ -17,12 +17,12 @@ class ChangeStrategy implements ChangeStrategyInterface {
 	 * @param CashBoxInterface $cashBox
 	 *
 	 * @return array|CashBoxItemInterface[]
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getChange(int $balance, CashBoxInterface $cashBox) {
 
 		if ($balance < 0) {
-			throw new \Exception('Отрицательный баланс');
+			throw new CoffeeMachineException('Отрицательный баланс');
 		}
 
 		if ($balance == 0) {

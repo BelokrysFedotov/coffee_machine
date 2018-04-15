@@ -80,12 +80,12 @@ class CoffeeMachine implements CoffeeMachineInterface{
 	 *
 	 * @param string $itemId
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function buy(string $itemId) {
 		$item = $this->storage->find($itemId);
 		if ($item->price() > $this->balance()) {
-			throw new \Exception('Не достаточно баланса');
+			throw new CoffeeMachineException('Не достаточно баланса');
 		}
 		$this->storage->getOne($itemId);
 		$this->balance -= $item->price();

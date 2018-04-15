@@ -131,11 +131,11 @@ class StorageItem implements StorageItemInterface {
 	 *
 	 * @param int $count
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function get(int $count) {
 		if ($this->count < $count) {
-			throw new \Exception('Товара ' . $this->name() . ' недостаточно на складе');
+			throw new CoffeeMachineException('Товара ' . $this->name() . ' недостаточно на складе');
 		}
 		$this->count -= $count;
 	}
@@ -143,7 +143,7 @@ class StorageItem implements StorageItemInterface {
 	/**
 	 * Забрать один товар
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne() {
 		$this->get(1);

@@ -90,11 +90,11 @@ class Coin implements CashBoxItemInterface {
 	 * @param int $count
 	 *
 	 * @return CashBoxItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function get(int $count) {
 		if ($this->count < $count) {
-			throw new \Exception('Не достаточно монет достоинством ' . $this->name());
+			throw new CoffeeMachineException('Не достаточно монет достоинством ' . $this->name());
 		}
 		$this->count -= $count;
 		return new Coin($this->value, $count);
@@ -104,7 +104,7 @@ class Coin implements CashBoxItemInterface {
 	 * Взять одну монету
 	 *
 	 * @return CashBoxItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne() {
 		return $this->get(1);

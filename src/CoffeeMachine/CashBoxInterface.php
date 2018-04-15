@@ -30,7 +30,7 @@ interface CashBoxInterface {
 	 * @param string $itemId
 	 *
 	 * @return CashBoxItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne(string $itemId);
 

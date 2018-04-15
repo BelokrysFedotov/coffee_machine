@@ -33,7 +33,7 @@ interface CoffeeMachineInterface {
 	 * Совершить покупку $itemId
 	 * @param string $itemId
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function buy(string $itemId);
 

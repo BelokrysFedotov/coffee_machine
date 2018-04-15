@@ -89,11 +89,11 @@ class CashBox implements CashBoxInterface {
 	 * @param string $itemId
 	 *
 	 * @return CashBoxItemInterface
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function getOne(string $itemId) {
 		if (!array_key_exists($itemId, $this->items)) {
-			throw new \Exception('В кассе не найден ' . $itemId);
+			throw new CoffeeMachineException('В кассе не найден ' . $itemId);
 		}
 		return $this->items[$itemId]->getOne();
 	}
@@ -103,11 +103,11 @@ class CashBox implements CashBoxInterface {
 	 *
 	 * @param CashBoxItemInterface $item
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function pushItem(CashBoxItemInterface $item) {
 		if (!array_key_exists($item->id(), $this->items)) {
-			throw new \Exception('В кассе не найден ' . $item->id());
+			throw new CoffeeMachineException('В кассе не найден ' . $item->id());
 		}
 		$this->items[$item->id()]->push($item->count());
 	}
@@ -117,11 +117,11 @@ class CashBox implements CashBoxInterface {
 	 *
 	 * @param string $itemId
 	 *
-	 * @throws \Exception
+	 * @throws CoffeeMachineException
 	 */
 	public function pushOne(string $itemId) {
 		if (!array_key_exists($itemId, $this->items)) {
-			throw new \Exception('В кассе не найден ' . $itemId);
+			throw new CoffeeMachineException('В кассе не найден ' . $itemId);
 		}
 		$this->items[$itemId]->pushOne();
 	}
