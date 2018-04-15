@@ -38,7 +38,6 @@ interface StorageInterface {
 	 *
 	 * @param string $itemId
 	 *
-	 * @return StorageItemInterface
 	 * @throws CoffeeMachineException
 	 */
 	public function getOne(string $itemId);

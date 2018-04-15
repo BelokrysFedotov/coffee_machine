@@ -102,14 +102,13 @@ class Storage implements StorageInterface {
 	 *
 	 * @param string $itemId
 	 *
-	 * @return StorageItemInterface
 	 * @throws CoffeeMachineException
 	 */
 	public function getOne(string $itemId) {
 		if (!array_key_exists($itemId, $this->items)) {
 			throw new CoffeeMachineException('Товар ' . $itemId . ' не найден');
 		}
-		return $this->items[$itemId]->getOne();
+		$this->items[$itemId]->getOne();
 	}
 
 	/**
