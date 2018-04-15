@@ -8,6 +8,7 @@ build:
   image: php:7-fpm
   script:
     - "php -v"
+    - "php composer.phar install"
   tags:
     - php
     - php7-fpm
@@ -17,6 +18,8 @@ test:
   image: php:7-fpm
   script:
     - "php -v"
+    - "composer install"
+    - "php vendor/bin/phpunit"
   tags:
     - php
     - php7-fpm
