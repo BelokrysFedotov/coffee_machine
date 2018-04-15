@@ -29,6 +29,10 @@ class ChangeStrategy implements ChangeStrategyInterface {
 			return [];
 		}
 
+		if($balance > $cashBox->sum()){
+			throw new CoffeeMachineException('Не достаточно средств');
+		}
+
 		$coins   = $cashBox->values();
 
 		foreach ($coins as $key => $value) {
@@ -62,6 +66,10 @@ class ChangeStrategy implements ChangeStrategyInterface {
 			if($balance <= 0) {
 				break;
 			}
+		}
+
+		if($balance > 0){
+			throw new CoffeeMachineException('Не достаточно средств');
 		}
 
 		return $change;
