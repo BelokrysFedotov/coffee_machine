@@ -19,9 +19,9 @@ test:
   image: php:7-fpm
   script:
     - "php -v"
-    - "apt-get update && apt-get install -y git zip php-xdebug && apt-get update"
+    - "apt-get update && apt-get install -y git zip && apt-get clean"
     - "php composer.phar install"
-    - "php vendor/bin/phpunit --coverage-text --colors=never "
+    - "php vendor/bin/phpunit"
   tags:
     - php
     - php7-fpm
