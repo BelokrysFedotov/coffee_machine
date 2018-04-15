@@ -93,6 +93,16 @@ window.addEventListener('load', function () {
 
 		methods: {
 			take: function (item) {
+
+				axios.post('/take/'+item.value)
+					.then(function (response) {
+						console.log(response);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				return;
+
 				//JS solition
 				if (item.count <= 0) {
 					app.Debug = 'Не достаточно монет';
@@ -105,6 +115,16 @@ window.addEventListener('load', function () {
 				this.CoffeeMachine.Machine.Cashbox.balance += item.value;
 			},
 			buy: function (item) {
+
+				axios.post('/buy/'+item.id)
+					.then(function (response) {
+						console.log(response);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				return;
+
 				//JS solition
 				if (item.count <= 0) {
 					this.Debug = 'Не достаточно товара';
@@ -118,6 +138,15 @@ window.addEventListener('load', function () {
 				this.CoffeeMachine.Machine.Cashbox.balance -= item.price;
 			},
 			getChange: function (event) {
+				axios.post('/get_change/')
+					.then(function (response) {
+						console.log(response);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				return;
+
 				var app = this;
 				//JS solition
 				if (this.CoffeeMachine.Machine.Cashbox.balance <= 0) {
