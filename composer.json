@@ -19,5 +19,8 @@
     "psr-4": {
       "CoffeeMachine\\": "src/CoffeeMachine"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.5.0"
   }
 }
