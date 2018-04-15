@@ -8,6 +8,7 @@ build:
   image: php:7-fpm
   script:
     - "php -v"
+    - "apt-get update && apt-get install -y git zip && apt-get update"
     - "php composer.phar install"
   tags:
     - php
@@ -18,7 +19,8 @@ test:
   image: php:7-fpm
   script:
     - "php -v"
-    - "composer install"
+    - "apt-get update && apt-get install -y git zip && apt-get update"
+    - "php composer.phar install"
     - "php vendor/bin/phpunit"
   tags:
     - php
