@@ -1,11 +1,14 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
+    <script>
+        var appData = {{ data|json_encode()|raw }};
+    </script>
     <div id="CoffeeMachine">
-        <div class="Debug" v-if="Debug">${Debug}</div>
+        <div class="Debug" v-if="debug">${debug}</div>
         <div class="Machine">
             <ul class="Items">
-                <li v-for="item in CoffeeMachine.Machine.Items">
+                <li v-for="item in coffeeMachine.storage.items">
                     <button :disabled="item.disabled" v-on:click="buy(item)">
                         ${item.name} - ${item.price}р x ${item.count}
                     </button>
@@ -18,7 +21,7 @@
                         <th>Coin</th>
                         <th>Count</th>
                     </tr>
-                    <tr v-for="item in CoffeeMachine.Machine.Cashbox.Coins">
+                    <tr v-for="item in coffeeMachine.cashBox.items">
                         <td>${item.value}р</td>
                         <td>${item.count}</td>
                     </tr>
@@ -26,9 +29,10 @@
             </div>
 
             <div class="Panel">
-                <p>${CoffeeMachine.Machine.status}</p>
-                <p>Balance: ${CoffeeMachine.Machine.Cashbox.balance}р</p>
-                <button  v-on:click="getChange">Get change</button>
+                <p>${coffeeMachine.status}</p>
+                <p>Balance: ${coffeeMachine.balance}р</p>
+                <button v-on:click="getChange">Get change</button>
+                <button v-on:click="reset">Reset</button>
             </div>
 
 
@@ -42,7 +46,7 @@
                         <th>Count</th>
                         <th></th>
                     </tr>
-                    <tr v-for="item in CoffeeMachine.User.Cashbox.Coins">
+                    <tr v-for="item in user.cashBox.items">
                         <td>${item.value}р</td>
                         <td>${item.count}</td>
                         <td>

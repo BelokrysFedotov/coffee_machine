@@ -10,7 +10,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /** @var $app \Silex\Application */
 
 $app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig', array());
+	try {
+		$repository  = new \CoffeeMachine\Repository($app['defaultCoffeeMachine'] ?: []);
+		$application = \CoffeeMachine\Factory::getApplication($repository->load());
+		$data        = $application->getState();
+	} catch (\Exception $exception) {
+		//
+		$data = [];
+	}
+	return $app['twig']->render('index.html.twig', ['data' => $data]);
 })
 ->bind('homepage');
 
@@ -18,16 +26,74 @@ $app->get('/test', function () use ($app) {
 	return new JsonResponse("Ok");
 });
 
-$app->post('/take/{value}', function ($value) use ($app) {
-	return new JsonResponse($value);
+$app->post('/reset/', function () use ($app) {
+
+	$jsonResponse = new JsonResponse();
+	try {
+		$repository  = new \CoffeeMachine\Repository($app['defaultCoffeeMachine'] ?: []);
+		$application = \CoffeeMachine\Factory::getApplication($app['defaultCoffeeMachine'] ?: []);
+
+		$jsonResponse->setData($application->getState());
+		$repository->save($application->save());
+	} catch (\Exception $exception) {
+		$jsonResponse->setData(['error' => $exception->getMessage()]);
+	}
+
+	return $jsonResponse;
+});
+
+$app->post('/take/{id}', function ($id) use ($app) {
+
+	$jsonResponse = new JsonResponse();
+	try {
+		$repository  = new \CoffeeMachine\Repository($app['defaultCoffeeMachine'] ?: []);
+		$application = \CoffeeMachine\Factory::getApplication($repository->load());
+
+		$application->take($id);
+
+		$jsonResponse->setData($application->getState());
+		$repository->save($application->save());
+	} catch (\Exception $exception) {
+		$jsonResponse->setData(['error' => $exception->getMessage()]);
+	}
+
+	return $jsonResponse;
 });
 
 $app->post('/buy/{id}', function ($id) use ($app) {
-	return new JsonResponse($id);
+
+	$jsonResponse = new JsonResponse();
+	try {
+		$repository  = new \CoffeeMachine\Repository($app['defaultCoffeeMachine'] ?: []);
+		$application = \CoffeeMachine\Factory::getApplication($repository->load());
+
+		$application->buy($id);
+
+		$jsonResponse->setData($application->getState());
+		$repository->save($application->save());
+	} catch (\Exception $exception) {
+		$jsonResponse->setData(['error' => $exception->getMessage()]);
+	}
+
+	return $jsonResponse;
 });
 
 $app->post('/get_change/', function () use ($app) {
-	return new JsonResponse("ok");
+
+	$jsonResponse = new JsonResponse();
+	try {
+		$repository  = new \CoffeeMachine\Repository($app['defaultCoffeeMachine'] ?: []);
+		$application = \CoffeeMachine\Factory::getApplication($repository->load());
+
+		$application->getChange();
+
+		$jsonResponse->setData($application->getState());
+		$repository->save($application->save());
+	} catch (\Exception $exception) {
+		$jsonResponse->setData(['error' => $exception->getMessage()]);
+	}
+
+	return $jsonResponse;
 });
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
