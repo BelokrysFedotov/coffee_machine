@@ -1,18 +1,18 @@
 stages:
-  - build
+#  - build
   - test
-  - deploy
+#  - deploy
 
-build:
-  stage: build
-  image: php:7-fpm
-  script:
-    - "php -v"
-    - "apt-get update && apt-get install -y git zip && apt-get update"
-    - "php composer.phar install"
-  tags:
-    - php
-    - php7-fpm
+#build:
+#  stage: build
+#  image: php:7-fpm
+#  script:
+#    - "php -v"
+#    - "apt-get update && apt-get install -y git zip && apt-get update"
+#    - "php composer.phar install"
+#  tags:
+#    - php
+#    - php7-fpm
 
 test:
   stage: test
@@ -21,16 +21,16 @@ test:
     - "php -v"
     - "apt-get update && apt-get install -y git zip && apt-get update"
     - "php composer.phar install"
-    - "php vendor/bin/phpunit"
+    - "php vendor/bin/phpunit --coverage-text --colors=never "
   tags:
     - php
     - php7-fpm
 
-deploy:
-  stage: deploy
-  image: php:7-fpm
-  script:
-    - "php -v"
-  tags:
-    - php
-    - php7-fpm
+#deploy:
+#  stage: deploy
+#  image: php:7-fpm
+#  script:
+#    - "php -v"
+#  tags:
+#    - php
+#    - php7-fpm
