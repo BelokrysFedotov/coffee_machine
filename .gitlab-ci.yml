@@ -8,7 +8,6 @@ stages:
 #  image: php:7-fpm
 #  script:
 #    - "php -v"
-#    - "apt-get update && apt-get install -y git zip && apt-get update"
 #    - "php composer.phar install"
 #  tags:
 #    - php
@@ -16,10 +15,9 @@ stages:
 
 test:
   stage: test
-  image: php:7-fpm
+  image: merorafael/php:7.0-fpm
   script:
     - "php -v"
-    - "apt-get update && apt-get install -y git zip && apt-get clean"
     - "php composer.phar install"
     - "php vendor/bin/phpunit"
   tags:
