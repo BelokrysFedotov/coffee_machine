@@ -80,6 +80,7 @@ class Application {
 	public function buy(string $id) {
 
 		$this->coffeeMachine->buy($id);
+		$this->debug = "Спасибо!";
 
 		return true;
 	}

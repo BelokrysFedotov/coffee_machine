@@ -71,6 +71,10 @@ body {
 	text-align: center;
 }
 
+#CoffeeMachine .Machine .Panel button{
+	margin: 3px 0;
+}
+
 #CoffeeMachine .User {
 	border: 1px solid #AAAAAA;
 	border-radius: 5px;

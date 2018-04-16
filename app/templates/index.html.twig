@@ -18,8 +18,8 @@
             <div class="Cashbox">
                 <table class="Coins">
                     <tr>
-                        <th>Coin</th>
-                        <th>Count</th>
+                        <th>Монеты</th>
+                        <th>Кол-во</th>
                     </tr>
                     <tr v-for="item in coffeeMachine.cashBox.items">
                         <td>${item.value}р</td>
@@ -30,9 +30,9 @@
 
             <div class="Panel">
                 <p>${coffeeMachine.status}</p>
-                <p>Balance: ${coffeeMachine.balance}р</p>
-                <button v-on:click="getChange">Get change</button>
-                <button v-on:click="reset">Reset</button>
+                <p>Внесенная сумма: ${coffeeMachine.balance}р</p>
+                <button v-on:click="getChange">Сдача</button>
+                <button v-on:click="reset">Сбросить</button>
             </div>
 
 
@@ -42,15 +42,15 @@
             <div class="Cashbox">
                 <table class="Coins">
                     <tr>
-                        <th>Item</th>
-                        <th>Count</th>
+                        <th>Монеты</th>
+                        <th>Кол-во</th>
                         <th></th>
                     </tr>
                     <tr v-for="item in user.cashBox.items">
                         <td>${item.value}р</td>
                         <td>${item.count}</td>
                         <td>
-                            <button  :disabled="item.count <= 0" v-on:click="take(item)">Take</button>
+                            <button  :disabled="item.count <= 0" v-on:click="take(item)">Внести</button>
                         </td>
                     </tr>
                 </table>
